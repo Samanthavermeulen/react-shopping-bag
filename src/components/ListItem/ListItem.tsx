@@ -1,6 +1,6 @@
 import React,{ReactElement} from 'react';
 import {IListItem} from '../IListInterface'
-import "./style.scss"
+import "./listItem.scss"
 
 const ListItem: React.FC<IListItem> = (props) => {
   let li: ReactElement

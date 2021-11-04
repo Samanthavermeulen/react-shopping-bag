@@ -1,7 +1,7 @@
 import React from 'react'
 import ListItem from '../ListItem/ListItem'
 import {IProps} from '../IListInterface'
-import "./style.scss"
+import "./list.scss"
 
 
 class List extends React.Component<IProps> {
