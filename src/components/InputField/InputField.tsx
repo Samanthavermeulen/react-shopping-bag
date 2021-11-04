@@ -2,9 +2,7 @@ import React from 'react'
 import {useForm, SubmitHandler} from 'react-hook-form'
 import {IProps} from '../IListInterface'
 import {Inputs} from '../IFieldInterface'
-import "./style.scss"
-
-
+import "./inputfield.scss"
 
 const InputField: React.FC<IProps> = (props:IProps) => {
   const { register, handleSubmit } = useForm<Inputs>()
