@@ -1,0 +1,31 @@
+.groceryItems {
+	padding-left: 20px;
+
+	&:nth-child(odd) {
+		background: #ec828d;
+	}
+
+	&:nth-child(even) {
+		background: #ffb9c3;
+	}
+
+	&:not(:last-child) {
+		margin-bottom: 3px;
+	}
+}
+
+.shoppingItems {
+	padding-left: 20px;
+
+	&:nth-child(odd) {
+		background: #b5e0f1;
+	}
+
+	&:nth-child(even) {
+		background: #66d3fa;
+	}
+
+	&:not(:last-child) {
+		margin-bottom: 3px;
+	}
+}
