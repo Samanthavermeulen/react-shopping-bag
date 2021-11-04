@@ -3,10 +3,15 @@ const path = require("path")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
-const WebpackManifestPlugin = require("webpack-manifest-plugin")
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 const config = {
   entry: "./src/components/App.tsx",
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+  },
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "build")
@@ -21,12 +26,6 @@ const config = {
     compress: true,
     port: 8080,
   },
-  // devServer: {
-    
-  //   port: 8080,
-  //   contentBase: path.resolve(__dirname, "build"),
-  //   hot: true
-  // },
   module: {
     rules: [
       {
@@ -62,45 +61,3 @@ if (currentTask == "build") {
 }
 
 module.exports = config
-
-// module.exports = {
-//   entry: "./src/components/App.tsx",
-//   target: "web",
-//   mode: "development",
-//   output: {
-//     path: path.resolve(__dirname, "build"),
-//     filename: "bundle.js",
-//   },
-//   resolve: {
-//     extensions: [".js", ".jsx", ".json", ".ts", ".tsx", ".css"],
-//   },
-//   module: {
-//     rules: [
-//       {
-//         test: /\.(ts|tsx)$/,
-//         loader: "awesome-typescript-loader",
-//       },
-//       {
-//         enforce: "pre",
-//         test: /\.js$/,
-//         loader: "source-map-loader",
-//       },
-//       {
-//         test: /\.s[ac]ss$/i,
-//         use: [
-//           // Creates `style` nodes from JS strings
-//           "style-loader",
-//           // Translates CSS into CommonJS
-//           "css-loader",
-//           // Compiles Sass to CSS
-//           "sass-loader",
-//         ],
-//       },
-//     ],
-//   },
-//   plugins: [
-//     new HtmlWebpackPlugin({
-//       template: path.resolve(__dirname, "src", "index.html"),
-//     }),
-//   ],
-// };
