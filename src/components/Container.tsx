@@ -12,22 +12,22 @@ const Container: React.FC = ({}) => {
     ]
   })
 
-  const [shoppingListItems, SetshoppingListItems] = useState<IObject>({
-    shoppingListItems: [
-      { id: 3, title: "Appels" },
-      { id: 4, title: "Pak melk" }
-    ]
-  })
+  // const [shoppingListItems, SetshoppingListItems] = useState<IObject>({
+  //   shoppingListItems: [
+  //     { id: 3, title: "Appels" },
+  //     { id: 4, title: "Pak melk" }
+  //   ]
+  // })
   
   const handleClickGroceryItem = (id:number, title:string) =>{
     const listItem = {id: id, title:title}
 
-    SetshoppingListItems((prevState:IObject) => {
-      const shopArray = prevState.shoppingListItems
-      shopArray.push(listItem)
-      const shopObject = {shoppingListItems: shopArray}
-      return shopObject
-    })
+    // SetshoppingListItems((prevState:IObject) => {
+    //   const shopArray = prevState.shoppingListItems
+    //   shopArray.push(listItem)
+    //   const shopObject = {shoppingListItems: shopArray}
+    //   return shopObject
+    // })
 
     setGroceryItems((prevState:IObject) => {
       const groceryArray = prevState.groceryItems.filter((item) =>item.id !== listItem.id)
@@ -35,15 +35,15 @@ const Container: React.FC = ({}) => {
       return shopObject
     })
 
-    addAmountToItem()
+    // addAmountToItem()
   }
 
-  const emptyCart = () => {
-    SetshoppingListItems((() => {
-      const newState = {shoppingListItems: [] as any[]}
-      return newState
-    }))
-  }
+  // const emptyCart = () => {
+  //   SetshoppingListItems((() => {
+  //     const newState = {shoppingListItems: [] as any[]}
+  //     return newState
+  //   }))
+  // }
 
   const addItemToGrocery = (data:IData) => {
     let object = {id: 0, title: ""}
@@ -58,28 +58,28 @@ const Container: React.FC = ({}) => {
     })
   }
 
-  const addAmountToItem = () => {
-    SetshoppingListItems((prevState:IObject) => {
-      const groceryArray = prevState.shoppingListItems
-      let object = {}
-      const duplicates = groceryArray.map((el, i) => {
-        return groceryArray.find((element:{title:string}, index:number) => {
-          if (i !== index && element.title === el.title) {
-            return el
-          }})
-        }).filter(x => x)
+  // const addAmountToItem = () => {
+  //   SetshoppingListItems((prevState:IObject) => {
+  //     const groceryArray = prevState.shoppingListItems
+  //     let object = {}
+  //     const duplicates = groceryArray.map((el, i) => {
+  //       return groceryArray.find((element:{title:string}, index:number) => {
+  //         if (i !== index && element.title === el.title) {
+  //           return el
+  //         }})
+  //       }).filter(x => x)
 
-      if(duplicates.length > 1){
-        const {id, title, amount} = duplicates[1];
-        const item = {id: id, title: title, amount: amount ? amount + 1 : duplicates.length}
-        const newArr = groceryArray.filter(value => value.title !== item.title)
-        newArr.push(item)
-        object = {shoppingListItems: newArr}
-        return object
-      }
-      return prevState
-    })
-  }
+  //     if(duplicates.length > 1){
+  //       const {id, title, amount} = duplicates[1];
+  //       const item = {id: id, title: title, amount: amount ? amount + 1 : duplicates.length}
+  //       const newArr = groceryArray.filter(value => value.title !== item.title)
+  //       newArr.push(item)
+  //       object = {shoppingListItems: newArr}
+  //       return object
+  //     }
+  //     return prevState
+  //   })
+  // }
   return (
     <div>
       <header>
@@ -88,11 +88,13 @@ const Container: React.FC = ({}) => {
       <main>
         <section>
           <h1>Boodschappenlijst</h1>
-          <GroceryList handleClickGroceryItem={handleClickGroceryItem} addItemToGrocery={addItemToGrocery} itemsObject={groceryItems}/>
+          <GroceryList/>
+          {/* <GroceryList handleClickGroceryItem={handleClickGroceryItem} addItemToGrocery={addItemToGrocery} itemsObject={groceryItems}/> */}
         </section>
         <section>
           <h1>Winkelmand</h1>
-          <ShoppingCart itemsObject={shoppingListItems} removeShoppingItem={emptyCart}/>
+          <ShoppingCart/>
+          {/* <ShoppingCart itemsObject={shoppingListItems}/> */}
         </section>
       </main>
     </div>
